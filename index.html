@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Auris Grand is a luxury hotel booking and hotel management website for premium resorts, suites, dining, offers, and secure reservations.">
+  <title>Auris Grand | Luxury Hotel Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="loader" aria-label="Loading website">
+    <div class="loader-mark">AG</div>
+  </div>
+
+  <header class="site-header" id="top">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Auris Grand home">
+        <span class="brand-icon"><i class="fa-solid fa-hotel"></i></span>
+        <span><strong>Auris</strong> Grand</span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-drawer">
+        <button class="drawer-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+        <ul class="nav-links">
+          <li><a class="active" href="#home">Home</a></li>
+          <li class="dropdown">
+            <a href="#hotels">Hotels <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+              <a href="#destinations">Popular Destinations</a>
+              <a href="#details">Hotel Details</a>
+              <a href="#offers">Special Offers</a>
+            </div>
+          </li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#dining">Dining</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="icon-button" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button class="icon-button has-badge" aria-label="Wishlist"><i class="fa-regular fa-heart"></i><span>3</span></button>
+          <button class="icon-button has-badge" aria-label="Notifications"><i class="fa-regular fa-bell"></i><span>5</span></button>
+          <button class="profile-button"><i class="fa-regular fa-user"></i><span>Login</span></button>
+          <a class="btn btn-primary" href="#booking">Book Now</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">World-class hotels, villas and resorts</p>
+        <h1>Find Your Perfect Luxury Stay</h1>
+        <p>Book premium hotels, resorts, villas and suites with thoughtful hospitality, instant confirmation, and elegant service from arrival to checkout.</p>
+      </div>
+      <form class="search-card reveal" id="searchForm">
+        <label>
+          <span>Destination</span>
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" value="Maldives" aria-label="Destination">
+        </label>
+        <label>
+          <span>Check-in</span>
+          <i class="fa-regular fa-calendar"></i>
+          <input type="date" value="2026-07-12" aria-label="Check-in date">
+        </label>
+        <label>
+          <span>Check-out</span>
+          <i class="fa-regular fa-calendar-check"></i>
+          <input type="date" value="2026-07-16" aria-label="Check-out date">
+        </label>
+        <label>
+          <span>Guests</span>
+          <i class="fa-solid fa-user-group"></i>
+          <select aria-label="Guests">
+            <option>2 Adults</option>
+            <option>Family 4</option>
+            <option>Group 6</option>
+          </select>
+        </label>
+        <label>
+          <span>Rooms</span>
+          <i class="fa-solid fa-bed"></i>
+          <select aria-label="Rooms">
+            <option>1 Suite</option>
+            <option>2 Rooms</option>
+            <option>Villa</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" type="submit">Search Hotels</button>
+      </form>
+    </section>
+
+    <section class="section" id="destinations">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Curated escapes</span>
+        <h2>Popular Destinations</h2>
+        <p>From coastal calm to city glitter, discover stays selected for comfort, design, service, and memorable dining.</p>
+      </div>
+      <div class="destination-grid">
+        <article class="destination-card reveal" style="--img:url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=900&q=80')">
+          <span>Goa</span><strong>284 hotels</strong><small>From Rs 8,900 - 4.8</small><button>Explore</button>
+        </article>
+        <article class="destination-card reveal" style="--img:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80')">
+          <span>Ooty</span><strong>126 hotels</strong><small>From Rs 6,400 - 4.7</small><button>Explore</button>
+        </article>
+        <article class="destination-card reveal" style="--img:url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80')">
+          <span>Dubai</span><strong>398 hotels</strong><small>From Rs 14,500 - 4.9</small><button>Explore</button>
+        </article>
+        <article class="destination-card reveal" style="--img:url('https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=900&q=80')">
+          <span>Maldives</span><strong>92 resorts</strong><small>From Rs 22,000 - 4.9</small><button>Explore</button>
+        </article>
+        <article class="destination-card reveal" style="--img:url('https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?auto=format&fit=crop&w=900&q=80')">
+          <span>Bali</span><strong>312 villas</strong><small>From Rs 11,800 - 4.8</small><button>Explore</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section pale" id="hotels">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Featured hotels</span>
+        <h2>Signature Stays With Verified Luxury</h2>
+      </div>
+      <div class="hotel-grid">
+        <article class="hotel-card reveal">
+          <div class="media"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80" alt="Luxury beach hotel exterior" loading="lazy"><button><i class="fa-regular fa-heart"></i></button></div>
+          <div class="card-body">
+            <div class="rating"><i class="fa-solid fa-star"></i> 4.9 Google Rating</div>
+            <h3>Auris Ocean Palace</h3>
+            <p><i class="fa-solid fa-location-dot"></i> Maldives - Private island</p>
+            <div class="amenities"><span>Breakfast</span><span>Pool</span><span>Spa</span><span>Restaurant</span><span>Free Cancellation</span></div>
+            <div class="price-row"><strong>Rs 28,500</strong><small>Rs 34,000</small><em>16% off</em></div>
+            <div class="card-actions"><button class="btn btn-primary book-room">Book Now</button><button class="btn btn-ghost">View Details</button></div>
+          </div>
+        </article>
+        <article class="hotel-card reveal">
+          <div class="media"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=80" alt="Luxury city hotel at night" loading="lazy"><button><i class="fa-regular fa-heart"></i></button></div>
+          <div class="card-body">
+            <div class="rating"><i class="fa-solid fa-star"></i> 4.8 Google Rating</div>
+            <h3>Regal Meridian Suites</h3>
+            <p><i class="fa-solid fa-location-dot"></i> Dubai - Downtown skyline</p>
+            <div class="amenities"><span>Rooftop</span><span>Bar</span><span>EV Charging</span><span>Airport Pickup</span></div>
+            <div class="price-row"><strong>Rs 18,900</strong><small>Rs 23,200</small><em>19% off</em></div>
+            <div class="card-actions"><button class="btn btn-primary book-room">Book Now</button><button class="btn btn-ghost">View Details</button></div>
+          </div>
+        </article>
+        <article class="hotel-card reveal">
+          <div class="media"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80" alt="Mountain resort swimming pool" loading="lazy"><button><i class="fa-regular fa-heart"></i></button></div>
+          <div class="card-body">
+            <div class="rating"><i class="fa-solid fa-star"></i> 4.7 Google Rating</div>
+            <h3>Hillcrest Spa Retreat</h3>
+            <p><i class="fa-solid fa-location-dot"></i> Munnar - Tea valley</p>
+            <div class="amenities"><span>Yoga</span><span>Spa</span><span>Kids Zone</span><span>Travel Desk</span></div>
+            <div class="price-row"><strong>Rs 12,400</strong><small>Rs 15,000</small><em>17% off</em></div>
+            <div class="card-actions"><button class="btn btn-primary book-room">Book Now</button><button class="btn btn-ghost">View Details</button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="details">
+      <div class="details-layout">
+        <div class="details-gallery reveal">
+          <img class="large" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80" alt="Luxury hotel room with ocean view" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Hotel suite seating area" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=600&q=80" alt="Infinity pool" loading="lazy">
+        </div>
+        <div class="details-copy reveal">
+          <span class="eyebrow">Hotel details</span>
+          <h2>Auris Ocean Palace, Maldives</h2>
+          <p>A calm private-island stay with villa-style rooms, a live kitchen restaurant, spa rituals, 360-degree suite previews, concierge travel desk, and a sticky booking flow built for fast decisions.</p>
+          <div class="detail-chips">
+            <span><i class="fa-solid fa-vr-cardboard"></i> 360 View</span>
+            <span><i class="fa-solid fa-video"></i> Video Tour</span>
+            <span><i class="fa-solid fa-map-location-dot"></i> Map</span>
+            <span><i class="fa-solid fa-shield-heart"></i> Flexible Policy</span>
+          </div>
+          <div class="review-box">
+            <strong>4.9</strong>
+            <div><b>Exceptional</b><span>2,486 verified reviews - Service 98% - Cleanliness 97%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pale" id="rooms">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Rooms and villas</span>
+        <h2>Choose Your Private Space</h2>
+      </div>
+      <div class="filter-tabs reveal" role="tablist" aria-label="Room categories">
+        <button class="active" data-filter="all">All Rooms</button>
+        <button data-filter="single">Single</button>
+        <button data-filter="double">Double</button>
+        <button data-filter="family">Family</button>
+        <button data-filter="suite">Suite</button>
+        <button data-filter="villa">Villa</button>
+      </div>
+      <div class="room-grid">
+        <article class="room-card reveal" data-type="suite">
+          <img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=900&q=80" alt="Executive suite bedroom" loading="lazy">
+          <div><span class="rating"><i class="fa-solid fa-star"></i> 4.9</span><h3>Executive Sea Suite</h3><p>2 guests - King bed - 62 sq m - Balcony - Bathtub - Sea view</p><div class="amenities"><span>WiFi</span><span>AC</span><span>TV</span><span>Mini Fridge</span><span>Coffee</span></div><div class="price-row"><strong>Rs 19,500</strong><small>per night</small></div><button class="btn btn-primary book-room">Book Now</button></div>
+        </article>
+        <article class="room-card reveal" data-type="family">
+          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=900&q=80" alt="Family room with city view" loading="lazy">
+          <div><span class="rating"><i class="fa-solid fa-star"></i> 4.8</span><h3>Family Skyline Room</h3><p>4 guests - Two queen beds - 78 sq m - City view - Breakfast included</p><div class="amenities"><span>WiFi</span><span>AC</span><span>TV</span><span>Balcony</span></div><div class="price-row"><strong>Rs 16,200</strong><small>per night</small></div><button class="btn btn-primary book-room">Book Now</button></div>
+        </article>
+        <article class="room-card reveal" data-type="villa">
+          <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=900&q=80" alt="Private luxury villa" loading="lazy">
+          <div><span class="rating"><i class="fa-solid fa-star"></i> 5.0</span><h3>Presidential Pool Villa</h3><p>6 guests - Private pool - 180 sq m - Mountain view - Butler service</p><div class="amenities"><span>WiFi</span><span>Kitchen</span><span>Spa Bath</span><span>Cancellation</span></div><div class="price-row"><strong>Rs 42,000</strong><small>per night</small></div><button class="btn btn-primary book-room">Book Now</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="facilities">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Facilities</span>
+        <h2>Everything A Five-Star Stay Should Have</h2>
+      </div>
+      <div class="facility-grid reveal">
+        <span><i class="fa-solid fa-water-ladder"></i> Infinity Pool</span><span><i class="fa-solid fa-utensils"></i> Multi Cuisine</span><span><i class="fa-solid fa-spa"></i> Spa</span><span><i class="fa-solid fa-dumbbell"></i> Gym</span><span><i class="fa-solid fa-child-reaching"></i> Kids Play Area</span><span><i class="fa-solid fa-briefcase"></i> Business Center</span><span><i class="fa-solid fa-champagne-glasses"></i> Banquet Hall</span><span><i class="fa-solid fa-shirt"></i> Laundry</span><span><i class="fa-solid fa-plane-arrival"></i> Airport Pickup</span><span><i class="fa-solid fa-car-battery"></i> EV Charging</span><span><i class="fa-solid fa-wifi"></i> Free WiFi</span><span><i class="fa-solid fa-martini-glass-citrus"></i> Luxury Bar</span>
+      </div>
+    </section>
+
+    <section class="section dining" id="dining">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Food and dining</span>
+        <h2>Live Kitchen, Room Service, Chef Specials</h2>
+      </div>
+      <div class="food-tabs reveal">
+        <button class="active">Breakfast</button><button>Lunch</button><button>Dinner</button><button>Desserts</button><button>Coffee</button><button>Seafood</button><button>Chef Specials</button>
+      </div>
+      <div class="food-grid">
+        <article class="food-card reveal"><img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80" alt="Breakfast plate" loading="lazy"><div><span class="badge veg">Veg</span><span class="badge">Best Seller</span><h3>Royal Breakfast Platter</h3><p>520 cal - 20 min - Room service available</p><div class="spice"><span></span><span></span><span></span></div><div class="qty"><button>-</button><b>1</b><button>+</button><strong>Rs 890</strong></div><button class="btn btn-primary add-food">Add to Room</button></div></article>
+        <article class="food-card reveal"><img src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=800&q=80" alt="Seafood dinner" loading="lazy"><div><span class="badge nonveg">Non Veg</span><span class="badge">Chef Pick</span><h3>Coastal Seafood Grill</h3><p>740 cal - 28 min - Live grill</p><div class="spice hot"><span></span><span></span><span></span></div><div class="qty"><button>-</button><b>1</b><button>+</button><strong>Rs 1,650</strong></div><button class="btn btn-primary add-food">Order Now</button></div></article>
+        <article class="food-card reveal"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80" alt="Dessert cake" loading="lazy"><div><span class="badge veg">Veg</span><span class="badge">Popular</span><h3>Gold Leaf Dessert</h3><p>390 cal - 15 min - Bakery special</p><div class="spice"><span></span><span></span><span></span></div><div class="qty"><button>-</button><b>1</b><button>+</button><strong>Rs 620</strong></div><button class="btn btn-primary add-food">Add to Room</button></div></article>
+      </div>
+    </section>
+
+    <section class="section pale" id="offers">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Special offers</span>
+        <h2>Packages Built Around Real Trips</h2>
+      </div>
+      <div class="offer-grid">
+        <article class="offer-card reveal"><i class="fa-solid fa-ring"></i><h3>Honeymoon Package</h3><p>Villa upgrade, candlelight dinner, spa credit, and airport pickup.</p><strong>Save 22%</strong></article>
+        <article class="offer-card reveal"><i class="fa-solid fa-people-roof"></i><h3>Family Weekend</h3><p>Two-room bundle, breakfast buffet, kids activities, late checkout.</p><strong>Save 18%</strong></article>
+        <article class="offer-card reveal"><i class="fa-solid fa-building"></i><h3>Corporate Stay</h3><p>Meeting room hours, express laundry, invoice support, lounge access.</p><strong>Save 15%</strong></article>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Gallery</span>
+        <h2>Inside The Auris Experience</h2>
+      </div>
+      <div class="masonry reveal">
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=700&q=80" alt="Hotel exterior" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?auto=format&fit=crop&w=700&q=80" alt="Luxury lobby" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=700&q=80" alt="Resort pool" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=700&q=80" alt="Restaurant interior" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=700&q=80" alt="Spa room" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=700&q=80" alt="Modern suite" loading="lazy">
+      </div>
+    </section>
+
+    <section class="section pale">
+      <div class="reviews-layout">
+        <div class="section-heading left reveal">
+          <span class="eyebrow">Guest reviews</span>
+          <h2>Verified Stays, Real Satisfaction</h2>
+          <p><strong class="counter" data-count="9846">0</strong> luxury bookings completed with instant confirmation and secure payment.</p>
+        </div>
+        <article class="review-card reveal">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Guest portrait" loading="lazy">
+          <div><span><i class="fa-solid fa-circle-check"></i> Verified - United Kingdom</span><h3>"The booking flow felt effortless and the hotel service matched the promise."</h3><p>Ocean villa, dining, airport pickup, and checkout invoice were all handled with clarity.</p><div class="stars">5 / 5 stars</div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section booking-section" id="booking">
+      <div class="booking-grid">
+        <div class="payment-panel reveal">
+          <span class="eyebrow">Secure payment</span>
+          <h2>Complete Your Reservation</h2>
+          <div class="payment-methods">
+            <button class="active"><i class="fa-brands fa-google-pay"></i> Google Pay</button>
+            <button><i class="fa-solid fa-mobile-screen"></i> UPI</button>
+            <button><i class="fa-regular fa-credit-card"></i> Card</button>
+            <button><i class="fa-solid fa-building-columns"></i> Net Banking</button>
+          </div>
+          <label class="coupon"><span>Coupon</span><input value="AURISLUXE"></label>
+          <button class="btn btn-primary" id="payButton">Pay Securely</button>
+          <div class="security"><i class="fa-solid fa-lock"></i> GST invoice, encrypted payment, instant confirmation</div>
+        </div>
+        <aside class="booking-summary reveal" aria-label="Booking summary">
+          <h3>Booking Summary</h3>
+          <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=700&q=80" alt="Selected room" loading="lazy">
+          <div class="summary-row"><span>Selected Room</span><strong>Executive Sea Suite</strong></div>
+          <div class="summary-row"><span>Guests</span><strong>2 Adults</strong></div>
+          <div class="summary-row"><span>Check-in</span><strong>12 Jul 2026</strong></div>
+          <div class="summary-row"><span>Nights</span><strong>4</strong></div>
+          <div class="summary-row"><span>Breakfast + Food</span><strong>Rs 4,200</strong></div>
+          <div class="summary-row"><span>Taxes and GST</span><strong>Rs 6,180</strong></div>
+          <div class="summary-row discount"><span>Discount</span><strong>-Rs 5,000</strong></div>
+          <div class="summary-total"><span>Final Amount</span><strong>Rs 83,380</strong></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section why" id="about">
+      <div class="why-grid reveal">
+        <div><i class="fa-solid fa-tags"></i><b>Best Price Guarantee</b></div>
+        <div><i class="fa-solid fa-crown"></i><b>Luxury Hospitality</b></div>
+        <div><i class="fa-solid fa-shield-halved"></i><b>Secure Payment</b></div>
+        <div><i class="fa-solid fa-headset"></i><b>24x7 Support</b></div>
+        <div><i class="fa-solid fa-comments"></i><b>Real Reviews</b></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div>
+      <a class="brand" href="#top"><span class="brand-icon"><i class="fa-solid fa-hotel"></i></span><span><strong>Auris</strong> Grand</span></a>
+      <p>Premium hotel booking, dining, facilities, payments, and guest management for modern luxury hospitality.</p>
+    </div>
+    <div><h3>Company</h3><a href="#">About</a><a href="#">Careers</a><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+    <div><h3>Support</h3><a href="#">FAQs</a><a href="#">Help Center</a><a href="tel:+910000000000">Phone</a><a href="mailto:stay@aurisgrand.example">Email</a></div>
+    <div><h3>Newsletter</h3><form class="newsletter"><input type="email" placeholder="Email address" aria-label="Email address"><button class="btn btn-primary">Join</button></form><div class="social"><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-youtube"></i></div></div>
+    <p class="copyright">(c) 2026 Auris Grand. All rights reserved.</p>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <button class="scroll-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <script src="script.js"></script>
+</body>
+</html>
