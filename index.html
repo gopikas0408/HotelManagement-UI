@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,34 +23,59 @@
         <span class="brand-icon"><i class="fa-solid fa-hotel"></i></span>
         <span><strong>Auris</strong> Grand</span>
       </a>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <i data-lucide="moon"></i>
+        <i data-lucide="sun"></i>
+      </button>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <div class="nav-drawer">
-        <button class="drawer-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+      <div class="nav-overlay" aria-hidden="true"></div>
+      <div class="nav-drawer" aria-hidden="true">
+        <div class="drawer-top">
+          <a class="brand drawer-brand" href="#top" aria-label="Auris Grand home">
+            <span class="brand-icon"><i class="fa-solid fa-hotel"></i></span>
+            <span><strong>Auris</strong> Grand</span>
+          </a>
+          <button class="drawer-close" aria-label="Close menu"><i data-lucide="x"></i></button>
+        </div>
+        <label class="drawer-search">
+          <i data-lucide="search"></i>
+          <input type="search" placeholder="Search hotels, rooms, dining" aria-label="Search hotel menu">
+        </label>
         <ul class="nav-links">
-          <li><a class="active" href="#home">Home</a></li>
+          <li><a class="active" href="#home"><i data-lucide="home"></i><span>Home</span></a></li>
           <li class="dropdown">
-            <a href="#hotels">Hotels <i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#hotels"><i data-lucide="hotel"></i><span>Hotels</span><i class="fa-solid fa-chevron-down"></i></a>
             <div class="dropdown-menu">
               <a href="#destinations">Popular Destinations</a>
               <a href="#details">Hotel Details</a>
               <a href="#offers">Special Offers</a>
             </div>
           </li>
-          <li><a href="#rooms">Rooms</a></li>
-          <li><a href="#dining">Dining</a></li>
-          <li><a href="#facilities">Facilities</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#rooms"><i data-lucide="bed"></i><span>Rooms</span></a></li>
+          <li><a href="#dining"><i data-lucide="utensils"></i><span>Dining</span></a></li>
+          <li><a href="#facilities"><i data-lucide="coffee"></i><span>Facilities</span></a></li>
+          <li><a href="#gallery"><i data-lucide="image"></i><span>Gallery</span></a></li>
+          <li class="mobile-extra"><a href="#offers"><i data-lucide="gift"></i><span>Special Offers</span></a></li>
+          <li class="mobile-extra"><a href="#dining"><i data-lucide="utensils"></i><span>Restaurant</span></a></li>
+          <li class="mobile-extra"><a href="#facilities"><i data-lucide="flower-2"></i><span>Spa</span></a></li>
+          <li class="mobile-extra"><a href="#facilities"><i data-lucide="waves"></i><span>Swimming Pool</span></a></li>
+          <li><a href="#about"><i data-lucide="map-pin"></i><span>About Us</span></a></li>
+          <li><a href="#contact"><i data-lucide="phone"></i><span>Contact</span></a></li>
         </ul>
         <div class="nav-actions">
-          <button class="icon-button" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-          <button class="icon-button has-badge" aria-label="Wishlist"><i class="fa-regular fa-heart"></i><span>3</span></button>
-          <button class="icon-button has-badge" aria-label="Notifications"><i class="fa-regular fa-bell"></i><span>5</span></button>
-          <button class="profile-button"><i class="fa-regular fa-user"></i><span>Login</span></button>
-          <a class="btn btn-primary" href="#booking">Book Now</a>
+          <a class="btn btn-primary" href="#booking"><i data-lucide="calendar-check"></i><span>Book Now</span></a>
+          <button class="profile-button mobile-action"><i data-lucide="settings"></i><span>My Booking</span></button>
+          <button class="icon-button has-badge" aria-label="Wishlist"><i data-lucide="heart"></i><span>3</span></button>
+          <button class="icon-button has-badge" aria-label="Notifications"><i data-lucide="bell"></i><span>5</span></button>
+          <button class="profile-button"><i data-lucide="user"></i><span>Profile</span></button>
+          <button class="profile-button logout-button mobile-action"><i data-lucide="log-out"></i><span>Logout</span></button>
+        </div>
+        <div class="drawer-footer">
+          <button><i data-lucide="languages"></i><span>Language</span></button>
+          <button><i data-lucide="badge-dollar-sign"></i><span>Currency</span></button>
+          <a href="tel:+910000000000"><i data-lucide="headphones"></i><span>24/7 Support</span></a>
         </div>
       </div>
     </nav>

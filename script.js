@@ -1,12 +1,19 @@
 const header = document.querySelector('.site-header');
 const drawer = document.querySelector('.nav-drawer');
+const navOverlay = document.querySelector('.nav-overlay');
 const navToggle = document.querySelector('.nav-toggle');
 const drawerClose = document.querySelector('.drawer-close');
+const themeToggle = document.querySelector('.theme-toggle');
 const toast = document.querySelector('.toast');
 const scrollTop = document.querySelector('.scroll-top');
 
+const storedTheme = localStorage.getItem('auris-theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+setTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
+
 window.addEventListener('load', () => {
   document.querySelector('.loader').classList.add('done');
+  window.lucide?.createIcons();
 });
 
 function setHeaderState() {
@@ -19,19 +26,61 @@ window.addEventListener('scroll', setHeaderState, { passive: true });
 setHeaderState();
 
 navToggle.addEventListener('click', () => {
+  document.body.classList.add('nav-open');
   drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
   navToggle.setAttribute('aria-expanded', 'true');
 });
 
 drawerClose.addEventListener('click', closeDrawer);
+navOverlay.addEventListener('click', closeDrawer);
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', closeDrawer);
 });
+document.querySelectorAll('.nav-actions a, .drawer-brand, .drawer-footer a').forEach(link => {
+  link.addEventListener('click', closeDrawer);
+});
+document.querySelectorAll('.nav-actions button').forEach(button => {
+  button.addEventListener('click', closeDrawer);
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeDrawer();
+});
+
+themeToggle.addEventListener('click', () => {
+  const nextTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+  setTheme(nextTheme);
+  localStorage.setItem('auris-theme', nextTheme);
+});
 
 function closeDrawer() {
+  document.body.classList.remove('nav-open');
   drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden', 'true');
   navToggle.setAttribute('aria-expanded', 'false');
 }
+
+function setTheme(theme) {
+  document.body.dataset.theme = theme;
+  const isDark = theme === 'dark';
+  themeToggle?.setAttribute('aria-pressed', String(isDark));
+  themeToggle?.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+}
+
+document.querySelectorAll('.nav-links a, .nav-actions button, .nav-actions a, .drawer-footer button, .drawer-footer a').forEach(item => {
+  item.addEventListener('click', event => {
+    const ripple = document.createElement('span');
+    const rect = item.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.className = 'ripple';
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+    item.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+});
 
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
