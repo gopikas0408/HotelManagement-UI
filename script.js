@@ -6,6 +6,8 @@ const drawerClose = document.querySelector('.drawer-close');
 const themeToggle = document.querySelector('.theme-toggle');
 const toast = document.querySelector('.toast');
 const scrollTop = document.querySelector('.scroll-top');
+const mobileNavQuery = window.matchMedia('(max-width: 1080px)');
+
 
 const storedTheme = localStorage.getItem('auris-theme');
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -24,13 +26,11 @@ function setHeaderState() {
 
 window.addEventListener('scroll', setHeaderState, { passive: true });
 setHeaderState();
+syncDrawerA11y();
 
-navToggle.addEventListener('click', () => {
-  document.body.classList.add('nav-open');
-  drawer.classList.add('open');
-  drawer.setAttribute('aria-hidden', 'false');
-  navToggle.setAttribute('aria-expanded', 'true');
-});
+
+
+navToggle.addEventListener('click', openDrawer);
 
 drawerClose.addEventListener('click', closeDrawer);
 navOverlay.addEventListener('click', closeDrawer);
@@ -41,11 +41,51 @@ document.querySelectorAll('.nav-actions a, .drawer-brand, .drawer-footer a').for
   link.addEventListener('click', closeDrawer);
 });
 document.querySelectorAll('.nav-actions button').forEach(button => {
-  button.addEventListener('click', closeDrawer);
+  if (!button.classList.contains('profile-trigger')) {
+    button.addEventListener('click', closeDrawer);
+  }
+});
+const profileDropdown = document.querySelector('.profile-dropdown');
+const profileTrigger = document.querySelector('.profile-trigger');
+const profileMenu = document.querySelector('.profile-menu');
+
+if (profileTrigger && profileDropdown) {
+  profileTrigger.addEventListener('click', event => {
+    if (!mobileNavQuery.matches) {
+      event.stopPropagation();
+      const isOpen = !profileDropdown.classList.toggle('open');
+      profileTrigger.setAttribute('aria-expanded', String(!isOpen));
+      profileMenu.setAttribute('aria-hidden', String(isOpen));
+    }
+  });
+}
+
+document.addEventListener('click', event => {
+  if (profileDropdown && !profileDropdown.contains(event.target)) {
+    profileDropdown.classList.remove('open');
+    if (profileTrigger) {
+      profileTrigger.setAttribute('aria-expanded', 'false');
+    }
+    if (profileMenu) {
+      profileMenu.setAttribute('aria-hidden', 'true');
+    }
+  }
 });
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') closeDrawer();
+  if (event.key === 'Escape') {
+    closeDrawer();
+    if (profileDropdown) {
+      profileDropdown.classList.remove('open');
+    }
+    if (profileTrigger) {
+      profileTrigger.setAttribute('aria-expanded', 'false');
+    }
+    if (profileMenu) {
+      profileMenu.setAttribute('aria-hidden', 'true');
+    }
+  }
 });
+mobileNavQuery.addEventListener('change', syncDrawerA11y);
 
 themeToggle.addEventListener('click', () => {
   const nextTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -53,11 +93,31 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('auris-theme', nextTheme);
 });
 
+function openDrawer() {
+  document.body.classList.add('nav-open');
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
+  navToggle.setAttribute('aria-expanded', 'true');
+  navOverlay.setAttribute('aria-hidden', 'false');
+}
+
 function closeDrawer() {
   document.body.classList.remove('nav-open');
   drawer.classList.remove('open');
-  drawer.setAttribute('aria-hidden', 'true');
+  drawer.setAttribute('aria-hidden', String(mobileNavQuery.matches));
   navToggle.setAttribute('aria-expanded', 'false');
+  navOverlay.setAttribute('aria-hidden', 'true');
+}
+
+function syncDrawerA11y() {
+  const isMobile = mobileNavQuery.matches;
+  if (!isMobile) {
+    document.body.classList.remove('nav-open');
+    drawer.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navOverlay.setAttribute('aria-hidden', 'true');
+  }
+  drawer.setAttribute('aria-hidden', String(isMobile && !drawer.classList.contains('open')));
 }
 
 function setTheme(theme) {
@@ -133,11 +193,17 @@ function showToast(message) {
   showToast.timer = window.setTimeout(() => toast.classList.remove('show'), 2600);
 }
 
-document.querySelector('#searchForm').addEventListener('submit', event => {
-  event.preventDefault();
-  showToast('Luxury stays found for your dates.');
-  document.querySelector('#hotels').scrollIntoView({ behavior: 'smooth' });
-});
+const searchForm = document.querySelector('#searchForm');
+
+if (searchForm) {
+  searchForm.addEventListener('submit', event => {
+    event.preventDefault();
+    showToast('Luxury stays found for your dates.');
+    document.querySelector('#hotels').scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+}
 
 document.querySelectorAll('.book-room').forEach(button => {
   button.addEventListener('click', () => {
@@ -150,11 +216,19 @@ document.querySelectorAll('.add-food').forEach(button => {
   button.addEventListener('click', () => showToast('Dining item added to your room.'));
 });
 
-document.querySelector('#payButton').addEventListener('click', () => {
-  showToast('Booking confirmed. Invoice is ready to download.');
-});
+const payButton = document.querySelector('#payButton');
 
-scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+if (payButton) {
+  payButton.addEventListener('click', () => {
+    showToast('Booking confirmed. Invoice is ready to download.');
+  });
+}
+
+if (scrollTop) {
+  scrollTop.addEventListener('click', () =>
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  );
+}
 
 document.querySelectorAll('.qty').forEach(control => {
   const [minus, plus] = control.querySelectorAll('button');
@@ -180,7 +254,9 @@ const counterObserver = new IntersectionObserver(entries => {
   requestAnimationFrame(tick);
   counterObserver.disconnect();
 }, { threshold: 0.5 });
-counterObserver.observe(counter);
+if (counter) {
+  counterObserver.observe(counter);
+}
 
 document.querySelectorAll('.masonry img').forEach(image => {
   image.addEventListener('click', () => {
